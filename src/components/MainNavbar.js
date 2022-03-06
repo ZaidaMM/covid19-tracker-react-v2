@@ -8,6 +8,13 @@ import {
   Nav,
   NavbarText,
   Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Input,
+  Label,
 } from 'reactstrap';
 
 function MainNavbar() {
@@ -45,15 +52,51 @@ function MainNavbar() {
               </NavLink>
             </NavItem>
           </Nav>
-          <div>
-            <NavbarText className='ml-3 '>
-              <Button type='button' className='btn btn-sm btn-purple px-3 '>
-                Subscribe
-              </Button>
-            </NavbarText>
-          </div>
+          <NavbarText className='ml-3 '>
+            <Button
+              type='button'
+              className='btn btn-sm btn-purple px-3'
+              onClick={toggle}
+            >
+              Subscribe
+            </Button>
+          </NavbarText>
         </Collapse>
       </Navbar>
+      <Modal isOpen={isOpen} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Subscribe for updates</ModalHeader>
+        <ModalBody>
+          <Form>
+            <FormGroup>
+              <Label for='name'>Name</Label>
+              <Input
+                id='name'
+                name='name'
+                type='text'
+                placeholder='Enter your name...'
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for='name'>Email</Label>
+              <Input
+                id='email'
+                name='email'
+                type='email'
+                placeholder='Enter your email...'
+              />
+            </FormGroup>
+            <FormGroup>
+              <Button
+                type='submit'
+                value='submit'
+                className='btn btn-purple secondary-color'
+              >
+                Submit
+              </Button>
+            </FormGroup>
+          </Form>
+        </ModalBody>
+      </Modal>
     </div>
   );
 }
