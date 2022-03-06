@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Navbar,
   NavbarToggler,
@@ -11,34 +11,50 @@ import {
 } from 'reactstrap';
 
 function MainNavbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
   return (
-    <Navbar className='main-color text-white px-4' expand='md' dark>
-      <NavbarToggler light />
-      <Collapse navbar>
-        <Nav className='ml-auto ' navbar>
-          <NavItem>
-            <NavLink href='/' className='text-white selected-color mx-2'>
-              Home
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href='/' className='text-white mx-2'>
-              Stats
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href='/' className='text-white mx-2'>
-              Countries
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Collapse>
-      <NavbarText>
-        <Button type='button' className='btn btn-sm btn-purple px-3'>
-          Subscribe
-        </Button>
-      </NavbarText>
-    </Navbar>
+    <div>
+      <Navbar
+        className='main-color text-white px-4 justify-content-center'
+        expand='md'
+        dark
+      >
+        <NavbarToggler full self-align-right onClick={toggle} />
+        <Collapse
+          navbar
+          isOpen={isOpen}
+          className='justify-content-center my-1'
+        >
+          <Nav className='mx-auto ' navbar>
+            <NavItem>
+              <NavLink href='/' className='text-white selected-color mx-3'>
+                Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/' className='text-white mx-3'>
+                Stats
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/' className='text-white mx-3'>
+                About
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <div>
+            <NavbarText className='ml-3 '>
+              <Button type='button' className='btn btn-sm btn-purple px-3 '>
+                Subscribe
+              </Button>
+            </NavbarText>
+          </div>
+        </Collapse>
+      </Navbar>
+    </div>
   );
 }
 export default MainNavbar;

@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #e9ecef;
+  background-color: red;
 }
 .main-color {
   background-color: #001233;
@@ -11,6 +11,7 @@ body {
 .selected-color {
   color: #007bff;
 }
+
 .btn-purple {
   background-color: #007bff;
   transition: all 0.2s ease-in;
