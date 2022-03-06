@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import MainNavbar from './MainNavbar';
 
 function Header() {
   return (
@@ -12,7 +12,7 @@ function Header() {
           Keep safe with reliable information in real time
         </p>
       </div>
-      <Navbar />
+      <MainNavbar />
     </div>
   );
 }
