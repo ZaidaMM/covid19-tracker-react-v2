@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: red;
+  background-color: #e9ecef;
 }
 .main-color {
   background-color: #001233;
@@ -29,4 +29,13 @@ body {
   background-position: bottom;
   background-size: cover;
   width: 100%;
+}
+.table-card {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.table-card tbody tr td {
+  padding: 0.2rem;
+  font-size: 0.8rem;
 }
