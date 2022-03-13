@@ -22,14 +22,14 @@ function Main() {
     async function getCountriesData() {
       await fetch('https://disease.sh/v3/covid-19/countries')
         .then((res) => res.json())
-        .then((json) => {
-          const countries = json.map((country) => ({
+        .then((data) => {
+          const countries = data.map((country) => ({
             name: country.country,
             value: country.countryInfo.iso2,
             cases: country.cases,
           }));
 
-          const sortedData = sortData(json, 'cases');
+          const sortedData = sortData(data, 'cases');
           setStatsTableData(sortedData);
           setCountries(countries);
         });
@@ -59,18 +59,8 @@ function Main() {
 
   console.log('Country selected: ', selectedCode);
 
-  const numFormatter = (num) => {
-    if (num > 999 && num < 1000000) {
-      return (num / 1000).toFixed(0) + 'k'; // convert to k for number from > 1000 < 1 million
-    } else if (num > 1000000) {
-      return (num / 1000000).toFixed(0) + 'm'; // convert to m for number from > 1 million
-    } else if (num < 900) {
-      return num; // if value < 1000, nothing to do
-    }
-  };
-
   return (
-    <div className='container mt-4 '>
+    <div className='m-4 '>
       <div className='row '>
         <div className='col-md-9 '>
           <h3 className='text-center'>Coronavirus Data by Country</h3>
@@ -104,37 +94,31 @@ function Main() {
             <div className='col-md-4'>
               <CountryCard
                 title={'Coronavirus Cases'}
-                cases={numFormatter(selectedCountry.cases)}
-                todayCases={numFormatter(selectedCountry.todayCases)}
-                casesPerOneMillion={numFormatter(
-                  selectedCountry.casesPerOneMillion
-                )}
+                cases={selectedCountry.cases}
+                todayCases={selectedCountry.todayCases}
+                casesPerOneMillion={selectedCountry.casesPerOneMillion}
               />
             </div>
             <div className='col-md-4'>
               <CountryCard
                 title={'Recovered'}
-                cases={numFormatter(selectedCountry.recovered)}
-                todayCases={numFormatter(selectedCountry.todayRecovered)}
-                casesPerOneMillion={numFormatter(
-                  selectedCountry.recoveredPerOneMillion
-                )}
+                cases={selectedCountry.recovered}
+                todayCases={selectedCountry.todayRecovered}
+                casesPerOneMillion={selectedCountry.recoveredPerOneMillion}
               />
             </div>
             <div className='col-md-4'>
               <CountryCard
                 title={'Deaths'}
-                cases={numFormatter(selectedCountry.deaths)}
-                todayCases={numFormatter(selectedCountry.todayDeaths)}
-                casesPerOneMillion={numFormatter(
-                  selectedCountry.deathsPerOneMillion
-                )}
+                cases={selectedCountry.deaths}
+                todayCases={selectedCountry.todayDeaths}
+                casesPerOneMillion={selectedCountry.deathsPerOneMillion}
               />
             </div>
           </div>
         </div>
         <div className='col-md-3 '>
-          <StatsTable countries={statsTableData} numFormatter={numFormatter} />
+          <StatsTable countries={statsTableData} />
           {/* <Chart /> */}
         </div>
       </div>

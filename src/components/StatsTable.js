@@ -1,7 +1,8 @@
 import React from 'react';
 import { Table } from 'reactstrap';
+import { numFormatter } from '../utilities/utils';
 
-function StatsTable({ countries, numFormatter }) {
+function StatsTable({ countries }) {
   return (
     <div>
       <div className='row'>

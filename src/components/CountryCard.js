@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardText, CardGroup } from 'reactstrap';
+import { numFormatter } from '../utilities/utils';
 
 function CountryCard({ title, cases, todayCases, casesPerOneMillion }) {
   return (
@@ -10,13 +11,14 @@ function CountryCard({ title, cases, todayCases, casesPerOneMillion }) {
             <CardTitle tag='h5'>{title}</CardTitle>
             <hr />
             <CardText>
-              {todayCases} <span className='small'> Today</span>
+              {numFormatter(todayCases)} <span className='small'> Today</span>
             </CardText>
             <CardText>
-              {cases} <span className='small'> Total</span>
+              {numFormatter(cases)} <span className='small'> Total</span>
             </CardText>
             <CardText>
-              {casesPerOneMillion} <span className='small'> p/1m pop.</span>
+              {numFormatter(casesPerOneMillion)}{' '}
+              <span className='small'> p/1m pop.</span>
             </CardText>
           </CardBody>
         </Card>
