@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CountryCard from './CountryCard';
 import StatsTable from './StatsTable';
 import { Form, FormGroup, Input, Table } from 'reactstrap';
+import { sortData } from '../utilities/utils';
 
 function Main() {
   const [selectedCode, setSelectedCode] = useState('worldwide');
@@ -27,7 +28,9 @@ function Main() {
             value: country.countryInfo.iso2,
             cases: country.cases,
           }));
-          setStatsTableData(json);
+
+          const sortedData = sortData(json, 'cases');
+          setStatsTableData(sortedData);
           setCountries(countries);
         });
     }
@@ -132,6 +135,7 @@ function Main() {
         </div>
         <div className='col-md-3 '>
           <StatsTable countries={statsTableData} numFormatter={numFormatter} />
+          {/* <Chart /> */}
         </div>
       </div>
     </div>

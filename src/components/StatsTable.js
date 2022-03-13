@@ -5,7 +5,7 @@ function StatsTable({ countries, numFormatter }) {
   return (
     <div>
       <div className='row'>
-        <div className='col'>
+        <div className='col justify-content-end'>
           <p className='lead'> Coronavirus Cases by Country</p>
           <Table
             striped
@@ -13,14 +13,12 @@ function StatsTable({ countries, numFormatter }) {
             className='d-flex justify-content-between table-card '
           >
             <tbody>
-              {countries
-                .sort((a, b) => b.cases - a.cases)
-                .map(({ country, cases }) => (
-                  <tr>
-                    <td key={country}>{country}</td>
-                    <td className='text-right '>{numFormatter(cases)} </td>
-                  </tr>
-                ))}
+              {countries.map(({ country, cases }) => (
+                <tr>
+                  <td key={country}>{country}</td>
+                  <td className='text-right '>{numFormatter(cases)} </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </div>
