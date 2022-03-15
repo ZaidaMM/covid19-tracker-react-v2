@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import CountryCard from './CountryCard';
 import StatsTable from './StatsTable';
+import Chart from './Chart';
+// import Chart2 from './Chart2';
 import { Form, FormGroup, Input, Table } from 'reactstrap';
+import numeral from 'numeral';
 import { sortData } from '../utilities/utils';
 
 function Main() {
@@ -119,7 +122,8 @@ function Main() {
         </div>
         <div className='col-md-3 '>
           <StatsTable countries={statsTableData} />
-          {/* <Chart /> */}
+
+          <Chart />
         </div>
       </div>
     </div>

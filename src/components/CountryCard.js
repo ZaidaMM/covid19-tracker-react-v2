@@ -17,7 +17,7 @@ function CountryCard({ title, cases, todayCases, casesPerOneMillion }) {
               {numFormatter(cases)} <span className='small'> Total</span>
             </CardText>
             <CardText>
-              {numFormatter(casesPerOneMillion)}{' '}
+              {numFormatter(casesPerOneMillion)}
               <span className='small'> p/1m pop.</span>
             </CardText>
           </CardBody>

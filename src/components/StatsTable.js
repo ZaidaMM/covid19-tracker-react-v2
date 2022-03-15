@@ -1,23 +1,22 @@
 import React from 'react';
 import { Table } from 'reactstrap';
-import { numFormatter } from '../utilities/utils';
+import numeral from 'numeral';
 
 function StatsTable({ countries }) {
   return (
-    <div>
+    <div className='statsTable'>
       <div className='row'>
-        <div className='col justify-content-end'>
-          <p className='lead'> Coronavirus Cases by Country</p>
-          <Table
-            striped
-            hover
-            className='d-flex justify-content-between table-card '
-          >
+        <div className='col align-items-center'>
+          <p className=' text-small'>
+            {' '}
+            <b>Live Cases by Country</b>
+          </p>
+          <Table className='tableCard d-flex '>
             <tbody>
               {countries.map(({ country, cases }) => (
-                <tr>
+                <tr className='d-flex justify-content-between'>
                   <td key={country}>{country}</td>
-                  <td className='text-right '>{numFormatter(cases)} </td>
+                  <td className='text-right '>{numeral(cases).format(0.0)} </td>
                 </tr>
               ))}
             </tbody>
