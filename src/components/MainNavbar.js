@@ -19,8 +19,10 @@ import {
 
 function MainNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   return (
     <div>
@@ -56,15 +58,15 @@ function MainNavbar() {
             <Button
               type='button'
               className='btn btn-sm btn-purple px-3'
-              onClick={toggle}
+              onClick={toggleModal}
             >
               Subscribe
             </Button>
           </NavbarText>
         </Collapse>
       </Navbar>
-      <Modal isOpen={isOpen} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Subscribe for updates</ModalHeader>
+      <Modal isOpen={isModalOpen} toggle={toggleModal}>
+        <ModalHeader toggle={toggleModal}>Subscribe for updates</ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
