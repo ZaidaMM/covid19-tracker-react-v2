@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CountryCard from './CountryCard';
 import StatsTable from './StatsTable';
 import Chart from './Chart';
-// import Chart2 from './Chart2';
-import { Form, FormGroup, Input, Table } from 'reactstrap';
-import numeral from 'numeral';
+import { Form, FormGroup, Input } from 'reactstrap';
 import { sortData } from '../utilities/utils';
 
 function Main() {
