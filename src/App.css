@@ -2,6 +2,9 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #e9ecef;
 }
+.app {
+  background-color: #e9ecef;
+}
 .main-color {
   background-color: #001233;
 }
@@ -42,4 +45,12 @@ body {
 .statsTable .tableCard tbody tr td {
   padding: 0.2rem;
   font-size: 0.8rem;
+}
+.leafletMap {
+  height: 500px;
+  background-color: #fff;
+  padding: 1rem;
+}
+.leafletMap .leaflet-container {
+  height: 90%;
 }

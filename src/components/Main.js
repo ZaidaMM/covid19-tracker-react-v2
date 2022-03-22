@@ -2,14 +2,18 @@ import React, { useState, useEffect } from 'react';
 import CountryCard from './CountryCard';
 import StatsTable from './StatsTable';
 import Chart from './Chart';
+import Map from './Map';
 import { Form, FormGroup, Input } from 'reactstrap';
 import { sortData } from '../utilities/utils';
+import 'leaflet/dist/leaflet.css';
 
 function Main() {
   const [selectedCode, setSelectedCode] = useState('worldwide');
   const [selectedCountry, setSelectedCountry] = useState({});
   const [countries, setCountries] = useState([]);
   const [statsTableData, setStatsTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 51.505, lng: -0.09 });
+  const [mapZoom, setMapZoom] = useState(2);
 
   useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/all')
@@ -53,15 +57,17 @@ function Main() {
       .then((data) => {
         setSelectedCode(selectedCode);
         setSelectedCountry(data);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.lng]);
+        setMapZoom(4);
+
+        console.log('Map Center: ', mapCenter);
         console.log('Country selected: ', selectedCode);
         console.log('Country data: ', data);
       });
   };
 
-  console.log('Country selected: ', selectedCode);
-
   return (
-    <div className='m-4 '>
+    <div className='mainBody m-4 '>
       <div className='row '>
         <div className='col-md-9 '>
           <h3 className='text-center'>Coronavirus Data by Country</h3>
@@ -117,10 +123,14 @@ function Main() {
               />
             </div>
           </div>
+          <div className='row'>
+            <div className='col leafletMa'>
+              <Map center={mapCenter} zoom={mapZoom} />
+            </div>
+          </div>
         </div>
-        <div className='col-md-3 '>
+        <div className='col-md-3 d'>
           <StatsTable countries={statsTableData} />
-
           <Chart />
         </div>
       </div>
