@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import CountryCard from './CountryCard';
 import StatsTable from './StatsTable';
 import Chart from './Chart';
@@ -11,15 +11,20 @@ function Main() {
   const [selectedCode, setSelectedCode] = useState('worldwide');
   const [selectedCountry, setSelectedCountry] = useState({});
   const [countries, setCountries] = useState([]);
+  const [mapCountries, setMapCountries] = useState([]);
   const [statsTableData, setStatsTableData] = useState([]);
-  const [mapCenter, setMapCenter] = useState({ lat: 51.505, lng: -0.09 });
+  const [selectedLat, setSelectedLat] = useState('');
+  const [selectedLong, setSelectedLong] = useState('');
+  const [mapCenter, setMapCenter] = useState(['', '']);
   const [mapZoom, setMapZoom] = useState(2);
+  const [mapData, setMapData] = useState([]);
 
   useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/all')
       .then((res) => res.json())
       .then((data) => {
         setSelectedCountry(data);
+        setMapCenter(['51.4934', '-0.0098']);
       });
   }, []);
 
@@ -32,11 +37,14 @@ function Main() {
             name: country.country,
             value: country.countryInfo.iso2,
             cases: country.cases,
+            newToday: country.casesToday,
+            lat: country.countryInfo.lat,
+            long: country.countryInfo.long,
           }));
-
           const sortedData = sortData(data, 'cases');
           setStatsTableData(sortedData);
           setCountries(countries);
+          setMapCountries(countries);
         });
     }
     getCountriesData();
@@ -57,10 +65,14 @@ function Main() {
       .then((data) => {
         setSelectedCode(selectedCode);
         setSelectedCountry(data);
-        setMapCenter([data.countryInfo.lat, data.countryInfo.lng]);
-        setMapZoom(4);
+        setSelectedLat(data.countryInfo.lat);
+        setSelectedLong(data.countryInfo.long);
+        setMapCenter([selectedLat, selectedLong]);
+        setMapZoom(7);
 
         console.log('Map Center: ', mapCenter);
+        console.log(data.countryInfo.lat);
+        console.log(data.countryInfo.long);
         console.log('Country selected: ', selectedCode);
         console.log('Country data: ', data);
       });
@@ -124,12 +136,16 @@ function Main() {
             </div>
           </div>
           <div className='row'>
-            <div className='col leafletMa'>
-              <Map center={mapCenter} zoom={mapZoom} />
+            <div className='col m-3 leafletContainer'>
+              <Map
+                mapCountries={mapCountries}
+                center={mapCenter}
+                zoom={mapZoom}
+              />
             </div>
           </div>
         </div>
-        <div className='col-md-3 d'>
+        <div className='col-md-3 mx-auto my-3 py-4 sidebar'>
           <StatsTable countries={statsTableData} />
           <Chart />
         </div>

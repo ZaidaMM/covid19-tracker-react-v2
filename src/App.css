@@ -33,8 +33,11 @@ body {
   background-size: cover;
   width: 100%;
 }
+.sidebar {
+  background-color: #fff;
+}
 .statsTable .tableCard {
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: scroll;
 }
 
@@ -47,10 +50,12 @@ body {
   font-size: 0.8rem;
 }
 .leafletMap {
-  height: 500px;
+  height: 100%;
+  height: 400px;
   background-color: #fff;
-  padding: 1rem;
 }
-.leafletMap .leaflet-container {
-  height: 90%;
+.leaflet-container {
+  height: 100%;
+  height: 400px;
+  background-color: #fff;
 }
