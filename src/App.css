@@ -33,7 +33,7 @@ a {
 }
 .btn-purple {
   background-color: #007bff;
-  transition: all 0.2s ease-in;
+  transition: scale 0.2s ease-in;
   border: none;
 }
 .btn-purple:hover {
