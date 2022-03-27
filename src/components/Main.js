@@ -41,6 +41,7 @@ function Main() {
           setStatsTableData(data);
           const sortedData = sortData(data, 'cases');
           setCountries(countries);
+          console.log(sortedData);
         });
     }
     getCountriesData();
@@ -99,7 +100,7 @@ function Main() {
                   <option value='worldwide'>Worldwide</option>
                   {countries.map((country) => {
                     return (
-                      <option value={country.name} key={country.code}>
+                      <option value={country.name} key={country.name}>
                         {country.name}
                       </option>
                     );
