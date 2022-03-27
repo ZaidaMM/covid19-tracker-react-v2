@@ -31,15 +31,15 @@ function Main() {
         .then((data) => {
           const countries = data.map((country) => ({
             name: country.country,
-            value: country.countryInfo.iso2,
+            code: country.countryInfo.iso2,
             cases: country.cases,
             newToday: country.casesToday,
             lat: country.countryInfo.lat,
             long: country.countryInfo.long,
           }));
           setMapCountries(data);
+          setStatsTableData(data);
           const sortedData = sortData(data, 'cases');
-          setStatsTableData(sortedData);
           setCountries(countries);
         });
     }
@@ -94,12 +94,12 @@ function Main() {
                   name='selectCountry'
                   onChange={onCountryChange}
                   value={selectedCode}
-                  key={selectedCountry.value}
+                  key={selectedCountry.code}
                 >
                   <option value='worldwide'>Worldwide</option>
                   {countries.map((country) => {
                     return (
-                      <option value={country.name} key={country.value}>
+                      <option value={country.name} key={country.code}>
                         {country.name}
                       </option>
                     );

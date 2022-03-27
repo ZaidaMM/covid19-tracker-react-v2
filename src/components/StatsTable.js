@@ -13,10 +13,12 @@ function StatsTable({ countries }) {
           </p>
           <Table className='tableCard d-flex '>
             <tbody>
-              {countries.map(({ country, cases }) => (
+              {countries.map((country) => (
                 <tr className='d-flex justify-content-between'>
-                  <td key={country}>{country}</td>
-                  <td className='text-right '>{numeral(cases).format(0.0)} </td>
+                  <td key={country.countryInfo.iso2}>{country.country}</td>
+                  <td className='text-right '>
+                    {numeral(country.cases).format(0.0)}{' '}
+                  </td>
                 </tr>
               ))}
             </tbody>

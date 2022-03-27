@@ -13,18 +13,18 @@ function Footer() {
                 </a>
               </li>
               <li className='px-2'>
-                <a href='#' className='text-color'>
+                <a href='/home' className='text-color'>
                   Stats
                 </a>
               </li>
 
               <li className='px-2'>
-                <a href='#' className='text-color'>
+                <a href='/home' className='text-color'>
                   Contact
                 </a>
               </li>
               <li className='px-2'>
-                <a href='#' className='text-color'>
+                <a href='/home' className='text-color'>
                   Subscribe
                 </a>
               </li>
