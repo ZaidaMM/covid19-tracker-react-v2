@@ -31,7 +31,7 @@ function MainNavbar() {
         expand='md'
         dark
       >
-        <NavbarToggler full self-align-right onClick={toggle} />
+        <NavbarToggler onClick={toggle} />
         <Collapse
           navbar
           isOpen={isOpen}
