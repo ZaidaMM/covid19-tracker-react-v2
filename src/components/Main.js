@@ -94,11 +94,14 @@ function Main() {
                   name='selectCountry'
                   onChange={onCountryChange}
                   value={selectedCode}
+                  key={selectedCountry.value}
                 >
                   <option value='worldwide'>Worldwide</option>
                   {countries.map((country) => {
                     return (
-                      <option value={country.value}>{country.name}</option>
+                      <option value={country.name} key={country.value}>
+                        {country.name}
+                      </option>
                     );
                   })}
                 </Input>
