@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import CountryCard from './CountryCard';
 import StatsTable from './StatsTable';
 import Chart from './Chart';
@@ -6,7 +6,6 @@ import Map from './Map';
 import { Form, FormGroup, Input } from 'reactstrap';
 import { sortData } from '../utilities/utils';
 import 'leaflet/dist/leaflet.css';
-import { Link } from 'react-router-dom';
 
 function Main() {
   const [selectedCode, setSelectedCode] = useState('worldwide');

@@ -3,13 +3,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import SelectedCountryStats from './components/SelectedCountryStats';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Routes,
-  Route,
-  useParams,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
