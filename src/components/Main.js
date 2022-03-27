@@ -6,6 +6,7 @@ import Map from './Map';
 import { Form, FormGroup, Input } from 'reactstrap';
 import { sortData } from '../utilities/utils';
 import 'leaflet/dist/leaflet.css';
+import { Link } from 'react-router-dom';
 
 function Main() {
   const [selectedCode, setSelectedCode] = useState('worldwide');
@@ -13,18 +14,14 @@ function Main() {
   const [countries, setCountries] = useState([]);
   const [mapCountries, setMapCountries] = useState([]);
   const [statsTableData, setStatsTableData] = useState([]);
-  const [selectedLat, setSelectedLat] = useState('');
-  const [selectedLong, setSelectedLong] = useState('');
-  const [mapCenter, setMapCenter] = useState(['', '']);
+  const [mapCenter, setMapCenter] = useState(['51.4934', '-0.0098']);
   const [mapZoom, setMapZoom] = useState(2);
-  const [mapData, setMapData] = useState([]);
 
   useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/all')
       .then((res) => res.json())
       .then((data) => {
         setSelectedCountry(data);
-        setMapCenter(['51.4934', '-0.0098']);
       });
   }, []);
 
@@ -41,10 +38,10 @@ function Main() {
             lat: country.countryInfo.lat,
             long: country.countryInfo.long,
           }));
+          setMapCountries(data);
           const sortedData = sortData(data, 'cases');
           setStatsTableData(sortedData);
           setCountries(countries);
-          setMapCountries(countries);
         });
     }
     getCountriesData();
@@ -65,14 +62,15 @@ function Main() {
       .then((data) => {
         setSelectedCode(selectedCode);
         setSelectedCountry(data);
-        setSelectedLat(data.countryInfo.lat);
-        setSelectedLong(data.countryInfo.long);
-        setMapCenter([selectedLat, selectedLong]);
-        setMapZoom(7);
+        setMapCenter([
+          selectedCountry.countryInfo.lat,
+          selectedCountry.countryInfo.long,
+        ]);
+        setMapZoom(8);
 
         console.log('Map Center: ', mapCenter);
-        console.log(data.countryInfo.lat);
-        console.log(data.countryInfo.long);
+        console.log([selectedCountry.countryInfo.lat]);
+        console.log([selectedCountry.countryInfo.long]);
         console.log('Country selected: ', selectedCode);
         console.log('Country data: ', data);
       });
@@ -83,9 +81,9 @@ function Main() {
       <div className='row '>
         <div className='col-md-9 '>
           <h3 className='text-center'>Coronavirus Data by Country</h3>
-          <div className='row align-items-baseline'>
+          <div className='row align-items-baseline '>
             <div className='col-md-6'>
-              <h4 className='text-center offset-md-3'>
+              <h4 className='text-center offset-md-3 unstyled lead'>
                 {selectedCountry.country}
               </h4>
             </div>

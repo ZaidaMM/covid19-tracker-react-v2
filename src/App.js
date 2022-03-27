@@ -1,14 +1,31 @@
 import React from 'react';
-import './App.css';
 import Header from './components/Header';
-import Main from './components/Main';
+import Home from './components/Home';
+import Footer from './components/Footer';
+import SelectedCountryStats from './components/SelectedCountryStats';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Routes,
+  Route,
+  useParams,
+} from 'react-router-dom';
+import './App.css';
 
 function App() {
   return (
-    <div className='app'>
+    <div>
       <Header />
-      <Main />
-      {/* <Footer/> */}
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route
+            path='/SelectedCountryStats'
+            element={<SelectedCountryStats />}
+          />
+        </Routes>
+      </Router>
+      <Footer />
     </div>
   );
 }

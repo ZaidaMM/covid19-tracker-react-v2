@@ -27,7 +27,7 @@ function MainNavbar() {
   return (
     <div>
       <Navbar
-        className='main-color text-white px-4 justify-content-center'
+        className='bg-dark-color text-white px-4 justify-content-center sticky-top'
         expand='md'
         dark
       >
@@ -37,19 +37,19 @@ function MainNavbar() {
           isOpen={isOpen}
           className='justify-content-center my-1'
         >
-          <Nav className='mx-auto ' navbar>
+          <Nav className='mx-auto' navbar>
             <NavItem>
               <NavLink href='/' className='text-white selected-color mx-3'>
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/' className='text-white mx-3'>
+              <NavLink href='#' className='text-white mx-3'>
                 Stats
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/' className='text-white mx-3'>
+              <NavLink href='#' className='text-white mx-3'>
                 About
               </NavLink>
             </NavItem>

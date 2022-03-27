@@ -1,20 +1,36 @@
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #e9ecef;
+  margin: 0;
+}
+.container {
+  margin: 0;
 }
 .app {
   background-color: #e9ecef;
 }
-.main-color {
+.bg-dark-color {
   background-color: #001233;
+}
+.bg-white {
+  background-color: #fff;
 }
 .text-color {
   color: white;
 }
+.text-small {
+  font-size: 0.8rem;
+}
 .secondary-color {
   color: #007bff;
 }
-
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.unstyled {
+  text-decoration: none;
+}
 .btn-purple {
   background-color: #007bff;
   transition: all 0.2s ease-in;
@@ -24,6 +40,17 @@ body {
   color: #007bff;
   background-color: white;
   border: 1px solid #007bff;
+  transform: scale(1);
+}
+ul li a,
+a i {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.icons:hover {
+  color: #007bff;
   transform: scale(1);
 }
 .hero {
