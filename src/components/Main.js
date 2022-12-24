@@ -84,11 +84,14 @@ function Main() {
           <h3 className='text-center'>Coronavirus Data by Country</h3>
           <div className='row align-items-baseline '>
             <div className='col-md-6'>
-              <Link to='/SelectedCountryStats'>
+              <h4 className='text-center offset-md-3 unstyled bold'>
+                {selectedCountry.country}
+              </h4>
+              {/* <Link to='/SelectedCountryStats'>
                 <h4 className='text-center offset-md-3 unstyled lead'>
                   {selectedCountry.country}
                 </h4>
-              </Link>
+              </Link> */}
             </div>
             <Form className='col text-center'>
               <FormGroup className='py-3'>

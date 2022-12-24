@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardText, CardGroup } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function SelectedCountryStats() {
   return (
@@ -7,7 +8,12 @@ function SelectedCountryStats() {
       <CardGroup>
         <Card>
           <CardBody>
-            <CardTitle tag='h5'>Selected Country Stats</CardTitle>
+            <CardTitle tag='h5'>
+              Selected Country Stats
+              <Link to='/' className='card-link'>
+                Back to home
+              </Link>
+            </CardTitle>
             <hr />
             <CardText>
               10k <span className='small'> Cases Today</span>

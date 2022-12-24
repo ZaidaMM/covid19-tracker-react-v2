@@ -90,3 +90,7 @@ a i {
 .selectedCountryStats {
   height: 63vh;
 }
+
+.card-link {
+  margin-left: 20px;
+}
