@@ -45,11 +45,6 @@ function MainNavbar() {
             </NavItem>
             <NavItem>
               <NavLink href='#' className='text-white mx-3'>
-                Stats
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href='#' className='text-white mx-3'>
                 About
               </NavLink>
             </NavItem>

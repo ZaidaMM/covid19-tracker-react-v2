@@ -6,6 +6,7 @@ import Map from './Map';
 import { Form, FormGroup, Input } from 'reactstrap';
 import { sortData } from '../utilities/utils';
 import 'leaflet/dist/leaflet.css';
+import { Link } from 'react-router-dom';
 
 function Main() {
   const [selectedCode, setSelectedCode] = useState('worldwide');
@@ -83,9 +84,11 @@ function Main() {
           <h3 className='text-center'>Coronavirus Data by Country</h3>
           <div className='row align-items-baseline '>
             <div className='col-md-6'>
-              <h4 className='text-center offset-md-3 unstyled lead'>
-                {selectedCountry.country}
-              </h4>
+              <Link to='/SelectedCountryStats'>
+                <h4 className='text-center offset-md-3 unstyled lead'>
+                  {selectedCountry.country}
+                </h4>
+              </Link>
             </div>
             <Form className='col text-center'>
               <FormGroup className='py-3'>
