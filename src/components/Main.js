@@ -85,7 +85,9 @@ function Main() {
           <div className='row align-items-baseline '>
             <div className='col-md-6'>
               <h4 className='text-center offset-md-3 unstyled bold'>
-                {selectedCountry.country}
+                {selectedCountry.country
+                  ? selectedCountry.country
+                  : 'Worldwide'}
               </h4>
               {/* <Link to='/SelectedCountryStats'>
                 <h4 className='text-center offset-md-3 unstyled lead'>
