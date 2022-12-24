@@ -6,7 +6,7 @@ import Map from './Map';
 import { Form, FormGroup, Input } from 'reactstrap';
 import { sortData } from '../utilities/utils';
 import 'leaflet/dist/leaflet.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Main() {
   const [selectedCode, setSelectedCode] = useState('worldwide');
